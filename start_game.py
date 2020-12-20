@@ -58,6 +58,12 @@ class StartNow:
                             show_info("Shortest Path Found!", "Found The Shortest Path!!\nShown By Using Green Color!!!")
                         else:
                             show_info("No Path Found!", "All The Paths From Source Are Blocked :(")
+                   
+                    else:
+                        if not start:
+                            show_info("Start Not Set...", "Please click on a grid as a source.")
+                        elif not end:
+                            show_info("Destination Not Set...", "Please click on a grid as a destination.")
 
                     if event.key == pygame.K_BACKSPACE:
                         start = None
