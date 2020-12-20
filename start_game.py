@@ -1,4 +1,5 @@
 from tools import *
+from all_dialogs import show_info
 from a_star_algorithm import algorithm
 
 class StartNow:
@@ -53,7 +54,10 @@ class StartNow:
                             for node in row:
                                 node.update_neighbor_nodes(grid)
 
-                        algorithm(lambda: draw(win, grid, ROWS, width), grid, start, end)
+                        if algorithm(lambda: draw(win, grid, ROWS, width), grid, start, end):
+                            show_info("Shortest Path Found!", "Found The Shortest Path!!\nShown By Using Green Color!!!")
+                        else:
+                            show_info("No Path Found!", "All The Paths From Source Are Blocked :(")
 
                     if event.key == pygame.K_BACKSPACE:
                         start = None

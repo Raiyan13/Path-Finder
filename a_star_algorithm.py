@@ -42,6 +42,7 @@ def algorithm(draw, grid, start, end):
 		if current == end:
 			find_shortest_path(came_from, end, draw, start)
 			end.make_end()
+			draw()
 			return True
 
 		for neighbor in current.neighbors:
