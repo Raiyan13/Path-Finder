@@ -1,4 +1,5 @@
 from tools import *
+from a_star_algorithm import algorithm
 
 class StartNow:
 
@@ -52,7 +53,7 @@ class StartNow:
                             for node in row:
                                 node.update_neighbor_nodes(grid)
 
-                        #astar algo will be call here
+                        algorithm(lambda: draw(win, grid, ROWS, width), grid, start, end)
 
                     if event.key == pygame.K_BACKSPACE:
                         start = None
