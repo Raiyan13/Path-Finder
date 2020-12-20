@@ -59,10 +59,63 @@ class Vertex:
 	def draw(self, win):
 		pygame.draw.rect(win, self.color, (self.x, self.y, self.width, self.width))
 
-	def update_neighbors(self, grid):
-		pass
+	def update_neighbor_nodes(self, grid):
+		self.neighbors = []
+		# DOWN
+		if self.row < self.total_rows - 1 and not grid[self.row + 1][self.col].is_obstacle():
+			self.neighbors.append(grid[self.row + 1][self.col])
+
+		# UP
+		if self.row > 0 and not grid[self.row - 1][self.col].is_obstacle():
+			self.neighbors.append(grid[self.row - 1][self.col])
+
+		# RIGHT
+		if self.col < self.total_rows - 1 and not grid[self.row][self.col + 1].is_obstacle():
+			self.neighbors.append(grid[self.row][self.col + 1])
+
+		# LEFT
+		if self.col > 0 and not grid[self.row][self.col - 1].is_obstacle():
+			self.neighbors.append(grid[self.row][self.col - 1])
 
 	def __lt__(self, other):
 		return False
+
+def make_grid(rows, width):
+	grid = []
+	gap = width // rows
+	for i in range(rows):
+		grid.append([])
+		for j in range(rows):
+			vertex = Vertex(i, j, gap, rows)
+			grid[i].append(vertex)
+
+	return grid
+
+
+def draw_grid(win, rows, width):
+	gap = width // rows
+	for i in range(rows):
+		pygame.draw.line(win, DARK_GRAY, (0, i * gap), (width, i * gap))
+		for j in range(rows):
+			pygame.draw.line(win, DARK_GRAY, (j * gap, 0), (j * gap, width))
+
+def get_clicked_pos(pos, rows, width):
+	gap = width // rows
+	y, x = pos
+
+	row = y // gap
+	col = x // gap
+
+	return row, col
+
+def draw(win, grid, rows, width):
+	win.fill(GRID)
+
+	for row in grid:
+		for node in row:
+			node.draw(win)
+
+	draw_grid(win, rows, width)
+	pygame.display.update()
 
 
