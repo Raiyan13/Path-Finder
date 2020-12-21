@@ -18,5 +18,8 @@ def show_error(error_title, message):
     messagebox.showerror(error_title, message, parent=parent)
     return
 
+def show_instructions():
+    pass
 
-
+def show_credits():
+    pass
