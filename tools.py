@@ -14,7 +14,6 @@ class Vertex:
 		self.x = row * width
 		self.y = col * width
 		self.total_rows = total_rows
-		pygame.display.set_caption("Path Finder...")
 
 	def get_current_position(self):
 		return self.row, self.col
@@ -115,6 +114,6 @@ def draw(win, grid, rows, width):
 			node.draw(win)
 
 	draw_grid(win, rows, width)
-	pygame.display.update()
+	pygame.display.flip()
 
 
