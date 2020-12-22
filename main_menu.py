@@ -1,72 +1,62 @@
 from tkinter import *
-
+from all_dialogs import show_credits, show_instructions
 root = Tk()
 
 root.title("Path Finder...")
 root.geometry("700x550")
-root.resizable(0,0)
+root.resizable(0, 0)
 root.configure(bg='gray12')
 
+def instructions_button_click():
+    show_instructions()
 
-def instructions_btn_clck():
+def start_button_click():
     pass
 
-def start_btn_clck():
-    pass
-
-def credits_btn_clck():
-    pass
+def credit_button_click():
+    show_credits()
 
 
 frm_top = Frame(root)
 
-main_menu_lbl = Label(frm_top, text="Main Menu", font="none 40 bold")
+main_menu_lbl = Label(frm_top, text="Path Finder", padx=30, font="none 40 bold", fg="white", bg='GRAY')
 main_menu_lbl.pack(side=LEFT)
 
-frm_top.pack(side = TOP)
+frm_top.pack(side=TOP)
+frm_top.place(x=180, y=50)
 
+frm_mid = Frame(root, bg="gray12")
 
-frm_mid = Frame(root)
+start_btn = Button(frm_mid, text="Start", font="none 14 bold", width=15, height=1, command=start_button_click)
+start_btn.pack(side=TOP, fill=X)
 
-instructions_btn = Button(frm_mid, text="Instructions", font=15, width=20, height=1, command = "instructions_btn_clck")
-instructions_btn.pack(side = LEFT)
+instructions_btn = Button(frm_mid, text="Instructions", font="none 14 bold", width=20, height=1, command=instructions_button_click)
+instructions_btn.pack(side=TOP, fill=X)
 
-frm_mid.pack(side= LEFT)
+credits_btn = Button(frm_mid, text="Credits", font="none 14 bold", width=15, height=1, command=credit_button_click)
+credits_btn.pack(side=TOP, fill=X)
 
+frm_mid.pack(side=TOP)
+frm_mid.place(x=230, y=180)
 
-frm_mid_right = Frame(root , bg="midnight blue")
+frm_mid_right = Frame(root, bg="gray12")
+instructions_lbl = Label(frm_mid_right, text="Game Indicator Colors", font="none 16 bold", fg="white", bg="gray12")
+instructions_lbl.pack(side=TOP)
+instructions_lbl = Label(frm_mid_right, text="Source Color = CYAN", font="none 10", fg="cyan", bg="gray12")
+instructions_lbl.pack(side=TOP)
 
-# instructions_lbl = Label(frm_mid_right, text='''Source color= CYAN
-#                                           \nDestination color = MAGENTA
-#                                           \nOBSTACLES color = RED
-#                                           \nSHORTEST PATH color = GREEN
-#                                           \nVISITED NODE color = WHITE
-#                                           \nNext possible way color = GRAY''', font="node 10 bold")
-# instructions_lbl.pack(side= RIGHT)
+instructions_lbl = Label(frm_mid_right, text="Obstacle Color = RED", font="none 10", fg="red", bg="gray12")
+instructions_lbl.pack(side=TOP)
+instructions_lbl = Label(frm_mid_right, text="Shortest Path Color = LIME", font="none 10", fg="lime", bg="gray12")
+instructions_lbl.pack(side=TOP)
+instructions_lbl = Label(frm_mid_right, text="Visited Node Color = WHITE", font="none 10", fg="WHITE", bg="gray12")
+instructions_lbl.pack(side=TOP)
+instructions_lbl = Label(frm_mid_right, text="Destination Color = MAGENTA", font="none 10", fg="Magenta", bg="gray12")
+instructions_lbl.pack(side=TOP)
+instructions_lbl = Label(frm_mid_right, text="Next Possible Node Color = GRAY", font="none 10", fg="gray", bg="gray12")
+instructions_lbl.pack(side=TOP)
 
-instructions_lbl = Label(frm_mid_right, text="Source color= CYAN", fg="cyan", bg="midnight blue")
-instructions_lbl.pack(side= TOP)
-instructions_lbl = Label(frm_mid_right, text="Destination color = MAGENTA", fg="Magenta", bg="midnight blue")
-instructions_lbl.pack(side= TOP)
-instructions_lbl = Label(frm_mid_right, text="Obstacle color = RED", fg="red", bg="midnight blue")
-instructions_lbl.pack(side= TOP)
-instructions_lbl = Label(frm_mid_right, text="Shortest Path color = Lime", fg="lime", bg="midnight blue")
-instructions_lbl.pack(side= TOP)
-instructions_lbl = Label(frm_mid_right, text="Visited Node color = WHITE", fg="WHITE", bg="midnight blue")
-instructions_lbl.pack(side= TOP)
-instructions_lbl = Label(frm_mid_right, text="Next Possible Way color = GRAY", fg="gray", bg="midnight blue")
-instructions_lbl.pack(side= TOP)
-
-frm_mid_right.pack(side=RIGHT)
-
-
-frm_bottom = Frame(root)
-
-start_btn = Button(frm_bottom, text="Start", font=15, width=20, height=1, command = "start_btn_clck")
-start_btn.pack(side=LEFT)
-credits_btn = Button(frm_bottom, text="Credits", font=15, width=20, height=1, command = "credits_btn_clck")
-credits_btn.pack(side=LEFT)
-
-frm_bottom.pack(side=BOTTOM)
+frm_mid_right.pack(side=TOP)
+frm_mid_right.place(x=242, y=350)
 
 root.mainloop()
