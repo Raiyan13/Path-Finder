@@ -3,8 +3,6 @@ from colors import *
 
 HEIGHT = 650
 WIDTH = 900
-WIN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Path Finder...")
 
 class Vertex:
 	def __init__(self, row, col, width, total_rows):
@@ -16,6 +14,7 @@ class Vertex:
 		self.x = row * width
 		self.y = col * width
 		self.total_rows = total_rows
+		pygame.display.set_caption("Path Finder...")
 
 	def get_current_position(self):
 		return self.row, self.col
